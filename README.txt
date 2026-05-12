@@ -1,13 +1,11 @@
 THRUPENCE. basic static website
 
-Version 5:
-- Matched to the supplied 3840x2160 frame.
-- Grey background.
-- Smaller image with top/right/bottom padding.
-- Smaller proportional text.
-- Full discography fits in the initial desktop frame.
-- Two hero images fade every 3 seconds.
-- Corrected social/music links.
+Version 6:
+- Background changed to #EDEDED.
+- Desktop typography targets 25px text and 34px line height at 3840px wide.
+- Album titles are bold; release metadata is regular weight.
+- Keeps two hero images fading every 3 seconds.
+- Includes corrected social/music links.
 - Includes CNAME for thrupence.com.
 
 Upload the contents of this folder to the existing GitHub repo, replacing current files.
