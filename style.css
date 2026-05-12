@@ -1,18 +1,20 @@
 /* 
-  THRUPENCE. basic static site
-  Version 2: tighter desktop layout so the full discography fits on the landing page.
+  THRUPENCE. static site
+  Version 5: matched to supplied 3840 × 2160 frame.
 
-  To add a carousel image:
-  1. Put the new image in /assets
-  2. Add the filename to images[] in script.js
+  Upload contents to GitHub Pages repo.
 */
 
 :root {
-  --page-pad: 16px;
-  --text-size: 13px;
-  --line-height: 1.02;
-  --left-width: 360px;
-  --image-width: min(610px, 40vw);
+  /* Scale from the 3840px design frame */
+  --page-pad-x: clamp(20px, 1.29vw, 50px);
+  --page-pad-y: clamp(20px, 1.11vw, 43px);
+  --text-size: clamp(11px, 0.67vw, 26px);
+  --line-height: 1.04;
+  --left-width: clamp(300px, 16.5vw, 635px);
+  --image-width: clamp(620px, 42.7vw, 1640px);
+  --image-top: clamp(22px, 1.11vw, 43px);
+  --image-right: clamp(32px, 2.38vw, 92px);
 }
 
 * {
@@ -23,8 +25,8 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: #ffffff;
-  color: #161616;
+  background: #d8d8d8;
+  color: #050505;
 }
 
 body {
@@ -47,7 +49,7 @@ a {
 .page {
   position: relative;
   min-height: 100vh;
-  padding: var(--page-pad);
+  padding: var(--page-pad-y) var(--page-pad-x);
 }
 
 .info {
@@ -56,7 +58,7 @@ a {
 }
 
 .intro {
-  margin: 0 0 24px;
+  margin: 0 0 clamp(16px, 1.02vw, 39px);
 }
 
 h1,
@@ -73,7 +75,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0 24px;
+  margin: 0 0 clamp(15px, 0.98vw, 38px);
 }
 
 .links a {
@@ -88,24 +90,23 @@ p {
 
 .spacer {
   display: block;
-  height: 19px;
+  height: clamp(14px, 0.78vw, 30px);
 }
 
 .email {
-  margin: 0 0 44px;
+  margin: 0 0 clamp(40px, 3.02vw, 116px);
 }
 
 .email a {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .rule {
-  margin: 0 0 17px;
-  white-space: pre;
+  display: none;
 }
 
 .discography article {
-  margin: 0 0 16px;
+  margin: 0 0 clamp(14px, 1.1vw, 42px);
 }
 
 .discography article:last-child {
@@ -114,8 +115,8 @@ p {
 
 .visual {
   position: fixed;
-  top: var(--page-pad);
-  right: 92px;
+  top: var(--image-top);
+  right: var(--image-right);
   width: var(--image-width);
 }
 
@@ -142,82 +143,47 @@ p {
   opacity: 1;
 }
 
-/* Large desktop: keep the image present but no longer overwhelming */
-@media (min-width: 1600px) {
+/* Keep the exact one-screen composition on common desktop/laptop widths */
+@media (max-height: 900px) and (min-width: 761px) {
   :root {
-    --text-size: 13px;
-    --left-width: 370px;
-    --image-width: 650px;
-  }
-
-  .visual {
-    right: 118px;
-  }
-}
-
-/* Standard laptops */
-@media (max-width: 1280px) {
-  :root {
-    --text-size: 12.5px;
-    --left-width: 340px;
-    --image-width: 46vw;
-  }
-
-  .visual {
-    right: 28px;
-  }
-
-  .discography article {
-    margin-bottom: 14px;
-  }
-
-  .email {
-    margin-bottom: 36px;
-  }
-}
-
-/* Short screens: extra compression so all releases stay visible */
-@media (max-height: 820px) and (min-width: 761px) {
-  :root {
-    --text-size: 12px;
-    --line-height: 1;
-    --image-width: min(560px, 38vw);
+    --text-size: clamp(10px, 0.63vw, 24px);
+    --line-height: 1.02;
+    --image-width: clamp(560px, 42vw, 1600px);
   }
 
   .intro {
-    margin-bottom: 18px;
+    margin-bottom: clamp(14px, 0.82vw, 32px);
   }
 
   .links {
-    margin-bottom: 19px;
+    margin-bottom: clamp(13px, 0.82vw, 32px);
   }
 
   .spacer {
-    height: 15px;
+    height: clamp(12px, 0.62vw, 24px);
   }
 
   .email {
-    margin-bottom: 30px;
-  }
-
-  .rule {
-    margin-bottom: 13px;
+    margin-bottom: clamp(34px, 2.35vw, 90px);
   }
 
   .discography article {
-    margin-bottom: 11px;
+    margin-bottom: clamp(12px, 0.86vw, 33px);
   }
 }
 
 /* Mobile: stack image underneath so the site remains usable */
 @media (max-width: 760px) {
   :root {
-    --text-size: 13px;
+    --page-pad-x: 14px;
+    --page-pad-y: 14px;
+    --text-size: 12px;
     --line-height: 1.04;
+    --left-width: 100%;
   }
 
   .page {
-    padding: 14px;
+    min-height: auto;
   }
 
   .info {

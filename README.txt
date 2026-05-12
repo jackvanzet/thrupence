@@ -1,15 +1,13 @@
 THRUPENCE. basic static website
 
-Version 3:
-- Includes two hero images.
-- Automatically fades between them every 3 seconds.
-- Keeps the tighter text and image sizing from Version 2.
+Version 5:
+- Matched to the supplied 3840x2160 frame.
+- Grey background.
+- Smaller image with top/right/bottom padding.
+- Smaller proportional text.
+- Full discography fits in the initial desktop frame.
+- Two hero images fade every 3 seconds.
+- Corrected social/music links.
+- Includes CNAME for thrupence.com.
 
-How to use:
-1. Open index.html locally to preview.
-2. Upload the whole folder to Netlify Drop.
-3. Replace placeholder links in index.html if needed.
-4. To add more fading images, put them in /assets and duplicate the image line inside .imageFade in index.html.
-
-Notes:
-- This is a static site. It does not need build tools, npm, GitHub, or a server.
+Upload the contents of this folder to the existing GitHub repo, replacing current files.
