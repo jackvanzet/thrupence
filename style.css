@@ -1,0 +1,243 @@
+/* 
+  THRUPENCE. basic static site
+  Version 2: tighter desktop layout so the full discography fits on the landing page.
+
+  To add a carousel image:
+  1. Put the new image in /assets
+  2. Add the filename to images[] in script.js
+*/
+
+:root {
+  --page-pad: 16px;
+  --text-size: 13px;
+  --line-height: 1.02;
+  --left-width: 360px;
+  --image-width: min(610px, 40vw);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: #ffffff;
+  color: #161616;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text-size);
+  font-weight: 700;
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 1px;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: var(--page-pad);
+}
+
+.info {
+  width: var(--left-width);
+  max-width: calc(100vw - 32px);
+}
+
+.intro {
+  margin: 0 0 24px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 24px;
+}
+
+.links a {
+  display: block;
+  text-decoration: none;
+}
+
+.links a:hover,
+.email a:hover {
+  text-decoration: underline;
+}
+
+.spacer {
+  display: block;
+  height: 19px;
+}
+
+.email {
+  margin: 0 0 44px;
+}
+
+.email a {
+  text-decoration: none;
+}
+
+.rule {
+  margin: 0 0 17px;
+  white-space: pre;
+}
+
+.discography article {
+  margin: 0 0 16px;
+}
+
+.discography article:last-child {
+  margin-bottom: 0;
+}
+
+.visual {
+  position: fixed;
+  top: var(--page-pad);
+  right: 92px;
+  width: var(--image-width);
+}
+
+.imageFade {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.fadeImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1200ms ease-in-out;
+  user-select: none;
+}
+
+.fadeImage.is-active {
+  opacity: 1;
+}
+
+/* Large desktop: keep the image present but no longer overwhelming */
+@media (min-width: 1600px) {
+  :root {
+    --text-size: 13px;
+    --left-width: 370px;
+    --image-width: 650px;
+  }
+
+  .visual {
+    right: 118px;
+  }
+}
+
+/* Standard laptops */
+@media (max-width: 1280px) {
+  :root {
+    --text-size: 12.5px;
+    --left-width: 340px;
+    --image-width: 46vw;
+  }
+
+  .visual {
+    right: 28px;
+  }
+
+  .discography article {
+    margin-bottom: 14px;
+  }
+
+  .email {
+    margin-bottom: 36px;
+  }
+}
+
+/* Short screens: extra compression so all releases stay visible */
+@media (max-height: 820px) and (min-width: 761px) {
+  :root {
+    --text-size: 12px;
+    --line-height: 1;
+    --image-width: min(560px, 38vw);
+  }
+
+  .intro {
+    margin-bottom: 18px;
+  }
+
+  .links {
+    margin-bottom: 19px;
+  }
+
+  .spacer {
+    height: 15px;
+  }
+
+  .email {
+    margin-bottom: 30px;
+  }
+
+  .rule {
+    margin-bottom: 13px;
+  }
+
+  .discography article {
+    margin-bottom: 11px;
+  }
+}
+
+/* Mobile: stack image underneath so the site remains usable */
+@media (max-width: 760px) {
+  :root {
+    --text-size: 13px;
+    --line-height: 1.04;
+  }
+
+  .page {
+    padding: 14px;
+  }
+
+  .info {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .email {
+    margin-bottom: 36px;
+  }
+
+  .discography article {
+    margin-bottom: 15px;
+  }
+
+  .visual {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 36px;
+  }
+}
